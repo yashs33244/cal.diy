@@ -267,6 +267,9 @@ export default function Signup({
           setTimeout(() => {
             router.push(`/auth/login?callbackUrl=${encodeURIComponent(callbackUrl)}`);
           }, 3000);
+          // Reset submission state so the button is not stuck in a loading/disabled
+          // state while the user waits for the redirect toast to finish.
+          formMethods.reset({}, { keepValues: true });
           return;
         }
 
